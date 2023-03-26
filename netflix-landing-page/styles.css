@@ -1,0 +1,383 @@
+/* global */
+*, ::after, ::before {
+    box-sizing: inherit;
+    padding: 0px;
+    margin: 0px;
+}
+
+html{
+	box-sizing: border-box;
+}
+
+body {
+    font-family: "Helvetica Neue", "Segoe UI", Roboto, Ubuntu, sans-serif;
+    background-color: rgb(0, 0, 0);
+    font-size: 16px;
+}
+
+/* main section */
+header{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    z-index: 4;
+    position: absolute;
+    width: 100%;
+    padding: 26px 56px;
+}
+
+#main header a.logo {
+    display: inline-block;
+}
+
+#main header a.logo svg {
+    fill: rgb(229, 9, 20);
+    height: 37px;
+}
+
+#main header div + div {
+    text-align: right;
+}
+
+div.select-wrapper {
+    display: inline-block;
+    margin-right: 30px;
+}
+
+div.select-wrapper svg {
+    color: white;
+    height: 20px;
+    position: absolute;
+    margin-top: 5px;
+    margin-left: 4px;
+}
+
+select {
+    display: inline-block;
+    color: white;
+    background: transparent;
+    padding: 6px 0px 6px 20px;
+    border-radius: 3px;
+}
+
+div a.button {
+    display: inline-block;
+    color: white;
+    background-color: rgb(229, 9, 20);
+    text-decoration: none;
+    padding: 6px 17px;
+    border-radius: 3px;
+}
+
+div.splash div.background {
+    position: relative;
+/*	height: 100vh;*/
+}
+
+div.splash div.background img {
+    max-width: 100%;
+    opacity: 0.6;
+}
+
+div.splash div.background div.gradient {
+    background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.8) 0px, transparent 60%, rgba(0, 0, 0, 0.8));
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+div.splash div.content {
+    text-align: center;
+    color: white;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    inset: 0px;
+}
+
+div.splash h1, h2, h3 {
+    width: 750px;
+}
+
+div.splash h1 {
+    font-size: 3.125rem;
+}
+
+div.splash h2 {
+    font-size: 1.625rem;
+    font-weight: normal;
+    margin: 16px 0px;
+}
+
+div.splash h3 {
+    font-size: 1.2rem;
+    font-weight: normal;
+    margin: 0px 0px 20px 0px;
+}
+
+form.sign-up-form {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr max-content;
+}
+
+form.sign-up-form input {
+    height: 60px;
+    padding-left: 10px;
+    font-size: 16px;
+    width: 100%;
+    border-radius: 0px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: dimgrey;
+    border-image: initial;
+}
+
+form.sign-up-form input ~ span {
+    position: absolute;
+    color: rgb(170, 170, 170);
+    left: 0px;
+    top: 0px;
+    pointer-events: none;
+    margin: 20px 10px;
+    transition: all 0.15s ease 0s;
+}
+
+form.sign-up-form input:focus ~span{
+	margin: 5px 10px;
+	font-size: 0.8rem;
+}
+
+form.sign-up-form button {
+    height: 60px;
+    font-size: 1.5rem;
+    color: white;
+    font-weight: normal;
+    background-color: rgb(229, 9, 20);
+    border-radius: 0px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: dimgrey;
+    border-image: initial;
+    padding: 0px 26px;
+}
+/* main section ends here */
+
+/* other sections */
+/* all sections */
+section.features{
+	color: white;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 48px;
+	padding: 70px 35px;
+	border-bottom: 8px solid #222;
+	align-items: center;
+}
+
+section.features div.text h1{
+	font-size: 3.125rem;
+    line-height: 1.1;
+    margin-bottom: 0.5rem;
+}
+
+section.features div.text p{
+	font-size: 1.625rem;
+    font-weight: 400;
+}
+
+section.features div.media {
+	position: relative;
+	display: grid;
+	grid-template-columns: 1fr;
+	justify-items: center;
+}
+
+section.features div.media img{
+/*	z-index: 4;*/
+}
+
+section.features:nth-child(odd) .text{
+	order: 2;
+}
+
+section.features:nth-of-type(1) div.media video.media-video{
+	position: absolute;
+	inset: 0;
+	width: 293px;
+	top: 62px;
+	left: 109px;
+	z-index: -1;
+}
+
+/* section 1 */
+section.features:nth-of-type(1){
+	border-top: 8px solid #222;
+}
+
+section.features:nth-of-type(1) div.media img.tv{
+	width: 400px;
+}
+
+/* section 2 */
+section.features:nth-of-type(2) div.download-tile{
+	border: 2px solid #666;
+	border-radius: 10px;
+	padding: 8px 12px;
+	background-color: black;
+	z-index: 5;
+	display: grid;
+	grid-template-columns: max-content 1fr max-content;
+	align-items: center;
+	justify-items: center;
+	position: absolute;
+	width: 320px;
+	height: 95px;
+	bottom: 20px;
+	left: 50%;
+	margin-left: -160px;
+	gap: 20px;
+}
+
+section.features:nth-of-type(2) div.media img{
+	width: 500px;
+}
+
+section.features:nth-of-type(2) div.download-tile img{
+	height: 75px; /* height of div - 2*padding */
+	width: auto;
+}
+
+section.features:nth-of-type(2) div.download-tile div p+p{
+	color: #0071eb;
+}
+
+/* section 3 */
+section.features:nth-of-type(3) div.media img.tv{
+	width: 500px;
+}
+
+section.features:nth-of-type(3) div.media video.media-video{
+	position: absolute;
+	top: 26px;
+	left: 103px;
+	z-index: -1;
+	width: 305px;
+}
+
+/* section 4 */
+section.features:nth-of-type(4) img{
+	width: 500px;
+}
+/* feature sections end here */
+
+/* faq section */
+section.faq{
+	padding: 70px 30px;
+	color: white;
+}
+
+section.faq h1{
+	font-size: 3.125rem;
+	text-align: center;
+	margin-bottom: 40px;
+}
+
+section.faq div.questions{
+	max-width: 635px;
+	margin: 0px auto;
+	font-size: 1.625rem;
+}
+
+section.faq div.questions div.question{
+	position: relative;
+	background-color: #303030;
+	margin-bottom: 10px;
+
+}
+
+section.faq div.questions div.question input[type="checkbox"]{
+	display: none;
+}
+
+section.faq div.questions div.question label{
+	display: block;
+}
+
+section.faq div.questions div.question label div.header{
+	padding: 20px 30px;
+	display: grid;
+	align-items: center;
+	grid-template-columns: 1fr max-content;
+	border-bottom: 1px solid black;
+}
+
+/* close svg */
+section.faq div.questions div.question label div.header svg{
+	width: 30px;
+	height: 30px;
+	fill: white;
+	transform: rotate(45deg);
+	transition: all 0.2s ease;
+}
+
+/* answer */
+section.faq div.questions div.question div.answer{
+/*	padding: 30px 30px;*/
+	padding: 0px 30px;
+	max-height: 0px;
+	overflow: hidden;
+	transition: all 0.2s ease;
+}
+
+section.faq div.questions div.question input[type="checkbox"]:checked ~ div.answer{
+	padding: 30px;
+	max-height: 600px;
+}
+
+section.faq div.questions div.question input[type="checkbox"]:checked ~ label div.header svg{
+	transform: rotate(270deg);
+}
+
+/* sign up */
+section.faq div.sign-up{
+	max-width: 635px;
+	text-align: center;
+	margin: auto;
+}
+
+section.faq div.sign-up p{
+	margin: 40px 0px 20px 0px;
+}
+/* faq section ends here */
+
+/* footer */
+section.footer{
+	border-top: 8px solid #222;
+	color: #ffffffb3;
+	font-size: 1rem;
+}
+
+section.footer > div{
+	margin: 32px 0px;
+	padding: 0px 20px;
+}
+
+section.footer a{
+	color: #ffffffb3;
+	min-width: 290px;
+	padding-right: 20px;
+	padding-bottom: 20px;
+}
+
+section.footer div div.links{
+	display: flex;
+	flex-wrap: wrap;
+	padding-top: 40px;
+}
+
+section.footer div.select-wrapper{
+	margin: 20px 0px;
+}
