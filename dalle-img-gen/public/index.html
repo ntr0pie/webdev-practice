@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+    <title>OpenAI Image Generator</title>
+</head>
+<body>
+    <header>
+        <h1>Dall-E 2 Image Generator</h1>
+        <a href=""><h2>OpenAI docs</h2></a>
+    </header>
+
+    <main>
+        <section class="input">
+            <h1>Decribe an image</h1>
+            <div class="input-form-wrapper">
+                <form class="input-form">
+                    <input type="text" id="prompt" placeholder = "prompt" name="prompt">
+                    <input type="text" id="size" placeholder = "small" name="size">
+                    <input type="submit" id="submit" value="Submit">
+                </form>
+            </div>
+        </section>
+        <section class="output">
+            <div class="image-container"><img id="output-image" src="" alt="" /></div>
+            <div id="output-message-wrapper"><p id="output-message"></p></div>
+        </section>
+    </main>
+
+    <script src="js/scripts.js"></script>
+</body>
+</html>
