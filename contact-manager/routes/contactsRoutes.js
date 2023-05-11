@@ -1,7 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const contactController = require('../controllers/contactsController');
+const tokenValidator = require('../middleware/tokenValidationHandler');
 
+router.use(tokenValidator); // Auth MW
 router.route('/')
     .get(contactController.getAllContacts)
     .post(contactController.createContact);
