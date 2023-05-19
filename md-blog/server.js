@@ -1,28 +1,29 @@
 const express = require('express');
+const connectDb = require('./config/dbConnect');
+const mongoose = require('mongoose');
+const articleRoutes = require('./routes/articlesRoute');
+const Article = require('./models/articleModel');
+const methodOverride = require('method-override');
+
+// Config
 const app = express();
 const port = process.env.PROCESS || 3000;
-app.set('view engine', 'ejs');
+connectDb(); // Database
 
-// Routes
-app.use('/articles', require('./routes/articles')); // Articles
+app.set('view engine', 'ejs'); // Template engine
 
-app.get('/', (req, res) => {
-    const articles = [
-    {
-        title: 'Test Article',
-        createdAt: new Date(),
-        description: 'Test description',
-    },
-    {
-        title: 'Test Article 1',
-        createdAt: new Date(),
-        description: 'Test description 1',
-    },];
-    res.render('index', {
+// Middleware
+app.use(express.urlencoded({ extended: false }));
+app.use(methodOverride('_method'))
+app.use('/articles', articleRoutes); // Articles Routes
+app.get('/', async (req, res) => {
+    const articles = await Article.find().sort({createdAt: 'desc'});
+    res.render('articles/index', {
         articles: articles,
     });
 })
 
+// Start Server
 app.listen(port, () => {
     console.log(`[Server] Listening to port ${port}`);
 })
