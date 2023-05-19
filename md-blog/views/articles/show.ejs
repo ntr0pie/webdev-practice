@@ -10,23 +10,13 @@
 </head>
 <body>
     <div class="container">
-        <h1 class="mb-4">Blog Articles</h1>
-        <a href="/articles/new" class="btn btn-success">New Article</a>
-
-        <!-- Article tiles -->
-        <% articles.forEach(article => { %>
-         <div class="card mt-4">
-            <div class="card-body">
-                <h4 class="card-title"><%= article.title %></h4>
-                <div class="card-subtitle text-muted mb-2">
-                    <%= article.createdAt.toLocaleDateString() %>
-                </div>
-                <div class="card-text mb-2">
-                    <%= article.description %>
-                </div>
-            </div>
-         </div>
-        <% }) %> 
+        <h1 class="mb-2"><%= article.title %></h1>
+        <div class="text-muted mb-2"><%= article.createdAt.toLocaleDateString() %></div>
+        <a href="/" class="btn btn-secondary">All Articles</a>
+        <a href="/articles/edit/<%= article.id %>" class="btn btn-info">Edit</a>
+        <div class="mt-2">
+            <%= article.markdown %>
+        </div>
     </div>
 </body>
 </html>
