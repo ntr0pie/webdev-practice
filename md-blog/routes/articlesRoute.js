@@ -14,14 +14,14 @@ router.get('/new', (req, res) => {
     res.render('articles/new', {article: new Article()});
 })
 
-router.get('/:id', getArticleById);
+router.get('/:slug', getArticleById);
 
-router.delete('/:id', deleteArticle);
+router.delete('/:slug', deleteArticle);
 
 router.post('/save', createArticle);
 
-router.get('/edit/:id', renderEditForm);
+router.get('/edit/:slug', renderEditForm);
 
-router.put('/update/:id', updateArticle);
+router.put('/update/:slug', updateArticle);
 
 module.exports = router;

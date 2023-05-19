@@ -25,8 +25,8 @@
                     <%= article.description %>
                 </div>
                 <div class="d-flex flex-row justify-content-left">
-                    <a href="articles/<%= article.id %>" class="btn btn-primary me-2">Read More</a>
-                    <form action="/articles/<%= article.id %>?_method=DELETE" method="POST">
+                    <a href="articles/<%= article.slug %>" class="btn btn-primary me-2">Read More</a>
+                    <form action="/articles/<%= article.slug %>?_method=DELETE" method="POST">
                         <button type="submit" class="btn btn-danger">Delete</button>
                     </form>
                 </div>

@@ -1,4 +1,5 @@
 const express = require('express');
+const slugify = require('slugify');
 const Article = require('../models/articleModel');
 
 const createArticle = async (req, res) => {
@@ -10,7 +11,7 @@ const createArticle = async (req, res) => {
     try {
         article = await article.save();
         console.log("Created new article: ", article);
-        res.redirect(`/articles/${article.id}`);
+        res.redirect(`/articles/${article.slug}`);
     } catch (error) {
         console.log(error);
         res.render('articles/new', {article: article});
@@ -18,7 +19,7 @@ const createArticle = async (req, res) => {
 };
 
 const getArticleById = async (req, res) => {
-    const article = await Article.findById(req.params.id);
+    const article = await Article.findOne({slug: req.params.slug});
     if(!article){
         console.log("Article not found");
         res.redirect('/');
@@ -27,7 +28,7 @@ const getArticleById = async (req, res) => {
 };
 
 const renderEditForm = async (req, res) => {
-    const article = await Article.findById(req.params.id);
+    const article = await Article.findOne({slug: req.params.slug});
     if (!article){
         console.log("Article not found");
         res.redirect('/');
@@ -38,17 +39,29 @@ const renderEditForm = async (req, res) => {
 
 const updateArticle = async (req, res) => {
     try {
-        const articleId = req.params.id;
         const {title, description, markdown} = req.body;
-        const updatedArticle = await Article.findByIdAndUpdate(
-            articleId, 
+        const article = await Article.findOne({slug: req.params.slug});
+
+        // Update slug if new title != old title
+        if(title != article.title){
+            slug = slugify(title, {lower: true, strict: true});
+        }
+        else{
+            slug = article.slug;
+        }
+
+        const updatedArticle = await Article.updateOne(
+            {
+                slug: req.params.slug
+            },
             {
                 title: title, 
                 description: description, 
-                markdown: markdown 
+                markdown: markdown,
+                slug: slug
             });
         console.log("Updated article: ", updatedArticle);
-        res.redirect(`/articles/${articleId}`);
+        res.redirect(`/articles/${slug}`);
     } catch (error) {
         console.log(error);
         res.render('articles/edit', {article: req.body});
@@ -57,7 +70,7 @@ const updateArticle = async (req, res) => {
 
 const deleteArticle = async (req, res) => {
     try {
-        const deletedArticle = await Article.findByIdAndDelete(req.params.id);
+        const deletedArticle = await Article.findOneAndDelete({slug: req.params.slug});
         console.log("Deleted article: ", deletedArticle);
         res.redirect('/');
     } catch (error) {
