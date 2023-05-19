@@ -1,12 +1,20 @@
 const express = require('express');
 const slugify = require('slugify');
 const Article = require('../models/articleModel');
+const cdp = require('dompurify');
+const {JSDOM} = require('jsdom');
+const domPurify = cdp(new JSDOM().window);
+const {marked} = require('marked');
 
 const createArticle = async (req, res) => {
+    if (req.body.markdown){
+        sanitzedHtml = domPurify.sanitize(marked(req.body.markdown));
+    }
     let article = new Article({
         title: req.body.title,
         description: req.body.description, 
-        markdown: req.body.markdown
+        markdown: req.body.markdown,
+        sanitzedHtml: sanitzedHtml
     });
     try {
         article = await article.save();
@@ -41,6 +49,9 @@ const updateArticle = async (req, res) => {
     try {
         const {title, description, markdown} = req.body;
         const article = await Article.findOne({slug: req.params.slug});
+        if (markdown){
+            sanitzedHtml = domPurify.sanitize(marked(markdown));
+        }
 
         // Update slug if new title != old title
         if(title != article.title){
@@ -50,6 +61,8 @@ const updateArticle = async (req, res) => {
             slug = article.slug;
         }
 
+  
+
         const updatedArticle = await Article.updateOne(
             {
                 slug: req.params.slug
@@ -58,7 +71,8 @@ const updateArticle = async (req, res) => {
                 title: title, 
                 description: description, 
                 markdown: markdown,
-                slug: slug
+                slug: slug,
+                sanitzedHtml: sanitzedHtml
             });
         console.log("Updated article: ", updatedArticle);
         res.redirect(`/articles/${slug}`);
