@@ -18,7 +18,7 @@ const createArticle = async (req, res) => {
     });
     try {
         article = await article.save();
-        console.log("Created new article: ", article);
+        console.log("New article: ", article);
         res.redirect(`/articles/${article.slug}`);
     } catch (error) {
         console.log(error);
@@ -61,8 +61,6 @@ const updateArticle = async (req, res) => {
             slug = article.slug;
         }
 
-  
-
         const updatedArticle = await Article.updateOne(
             {
                 slug: req.params.slug
@@ -74,7 +72,7 @@ const updateArticle = async (req, res) => {
                 slug: slug,
                 sanitzedHtml: sanitzedHtml
             });
-        console.log("Updated article: ", updatedArticle);
+        console.log("Update article: ", updatedArticle);
         res.redirect(`/articles/${slug}`);
     } catch (error) {
         console.log(error);
@@ -91,8 +89,6 @@ const deleteArticle = async (req, res) => {
         console.log(error)
         res.redirect('/');
     }
-
-
 };
 
 module.exports = {

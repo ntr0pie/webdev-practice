@@ -22,6 +22,6 @@ router.post('/save', createArticle);
 
 router.get('/edit/:slug', renderEditForm);
 
-router.put('/update/:slug', updateArticle);
+router.put('/:slug', updateArticle);
 
 module.exports = router;
