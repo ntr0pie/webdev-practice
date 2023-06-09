@@ -34,36 +34,26 @@ const problems2 = [
     }
 ];
 
-function renderProblems1() {
+function renderProblem1(){
+    renderProblem(problems1);
+}
+
+function renderProblem2(){
+    renderProblem(problems2);
+}
+
+function renderProblem(Problem) {
     const parentEl = document.getElementById('problems-table');
     parentEl.innerHTML = null;
     const tableTag = document.createElement('table');
-    for (let p in problems1) {
+    for (let p in Problem) {
         const trTag = document.createElement('tr');
-        for (let k in problems1[p]) {
+        for (let k in Problem[p]) {
             const tdTag = document.createElement('td');
-            tdTag.innerHTML = problems1[p][k];
+            tdTag.innerHTML = Problem[p][k];
             trTag.appendChild(tdTag);
         }
         tableTag.appendChild(trTag);
     }
     parentEl.appendChild(tableTag);
 }
-
-function renderProblems2() {
-    const parentEl = document.getElementById('problems-table');
-    parentEl.innerHTML = null;
-    const tableTag = document.createElement('table');
-    for (let p in problems2) {
-        const trTag = document.createElement('tr');
-        for (let k in problems2[p]) {
-            const tdTag = document.createElement('td');
-            tdTag.innerHTML = problems2[p][k];
-            trTag.appendChild(tdTag);
-        }
-        tableTag.appendChild(trTag);
-    }
-    parentEl.appendChild(tableTag);
-}
-
-// renderProblems1();
