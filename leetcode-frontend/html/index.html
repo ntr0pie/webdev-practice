@@ -1,0 +1,40 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="../css/style.css">
+    </head>
+    <body>
+
+        <!-- Login form -->
+        <form action="POST">
+            <div>
+                Login Form
+            </div>
+
+            <label class="form-label">
+                Email: <input class="form-input" type="text" id="email" name="email" placeholder="email">
+            </label>
+
+            <label class="form-label">
+                Password: <input class="form-input" type="text" id="pw" name="pw" placeholder="password">
+            </label>
+        </form>
+
+        <!-- Problems -->
+        <div id="problems-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th class="table-heading">Title</th>
+                        <th class="table-heading">Difficulty</th>
+                        <th class="table-heading">Acceptance</th>
+                    </tr>
+                </thead>
+                <tbody id="lc-problems">
+                </tbody>
+                <caption>
+                </caption>
+            </table>
+        </div>
+        <script src="../js/script.js"></script>
+    </body>
+</html>
