@@ -1,36 +1,36 @@
 const problems1 = [
     {
-        title: '201. Lorem Ipsum',
+        title: '101. Lorem Ipsum 1',
         dfc: 'Medium',
         ar8: '54%',
     },
     {
-        title: '101 Lorem Ipsum',
+        title: '102. Lorem Ipsum 2',
         dfc: 'Hard',
         ar8: '73%'
     },
     {
-        title: '101 Lorem Ipsum',
+        title: '103. Lorem Ipsum 3',
         dfc: 'Hard',
-        ar8: '73%'
+        ar8: '43%'
     }
 ];
 
 const problems2 = [
     {
-        title: '201. Lorem Ipsum',
+        title: '201. Lorem Ipsum A',
         dfc: 'Medium',
         ar8: '54%',
     },
     {
-        title: '101 Lorem Ipsum',
+        title: '202. Lorem Ipsum B',
         dfc: 'Hard',
-        ar8: '71%'
+        ar8: '73%'
     },
     {
-        title: '101 Lorem Ipsum',
-        dfc: 'Hard',
-        ar8: '70%'
+        title: '203. Lorem Ipsum C',
+        dfc: 'Easy',
+        ar8: '71%'
     }
 ];
 
